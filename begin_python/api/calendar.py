@@ -7,17 +7,20 @@ from dbConfig import *
 def calendar():
     try:
         data = request.json
-        name = data["name"]
+        start = data["start"]
+        end = data["end"]
 
         # # connect db
         conn = connectToDB()
         cursor = conn.cursor()
 
-        sql = """ SELECT name , start , details , end FROM calendar WHERE name = '""" + str(name) +  """'"""
-        print(sql)
+        sql = """ SELECT name , start , end FROM `calendar` WHERE `start` BETWEEN '""" + str(start) + """' AND '""" + str(end) + """'"""
+        # print(sql)
         cursor.execute(sql)
         data_sql = cursor.fetchall()
         columns = [column[0] for column in cursor.description]
+        # print(columns)
+        # print(data_sql)
         result = toJson(data_sql,columns)
         if len(result) > 0:
             result = {"status":"OK","result":result}
