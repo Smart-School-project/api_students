@@ -4,3 +4,4 @@ from api import leave
 from api import homework
 from api import calendar
 from api import submitleave
+from api import schedule_student

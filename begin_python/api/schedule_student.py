@@ -1,28 +1,26 @@
 #!/usr/bin/env python
-# -*- coding: utf-8 -*-
+# -- coding: utf-8 --
 from dbConfig import *
 
 
-@app.route('/submitleave', methods=['POST'])
-def submitleave():
+@app.route('/schedule_student', methods=['POST'])
+def schedule_student():
     try:
         data = request.json
-        account_id = data["account_id"]
-
-
+        room_id = data["room_id"]
 
         # # connect db
         conn = connectToDB()
         cursor = conn.cursor()
 
-        sql = """ SELECT * FROM `leave` WHERE account_id = '""" + str(account_id) + """' """ 
-        # ด้านหลังเช็คเป็น string เราสามารถใส่ """''""" เเบบนี้มันจะบอกเป็น string
-        print(sql)
+        sql = """ SELECT * FROM schedule_student WHERE room_id = '""" + str(room_id) + """'"""
+        # print(sql)
         cursor.execute(sql)
         data_sql = cursor.fetchall()
         columns = [column[0] for column in cursor.description]
+        # print(data_sql)
+        # print(columns)
         result = toJson(data_sql,columns)
-        print(data_sql)
         if len(result) > 0:
             result = {"status":"OK","result":result}
         else:

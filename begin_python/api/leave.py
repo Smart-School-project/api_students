@@ -6,6 +6,7 @@ def leave():
         data = request.json
         # id = data["id"]
         date = data["date"]
+        account_id = data["account_id"]
         name = data["name"]
         students_id = data["students_id"]
         room = data["room"]
@@ -19,8 +20,8 @@ def leave():
         conn = connectToDB()
         cursor = conn.cursor()
 
-        sql = """ INSERT INTO `leave` (date, name, students_id, room, type_leave, subject, teacher, cause, pdf) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s) """   
-        cursor.execute(sql,(date,name,students_id,room,type_leave,subject,teacher,cause,pdf))
+        sql = """ INSERT INTO `leave` (account_id ,date, name, students_id, room, type_leave, subject, teacher, cause, pdf) VALUES (%s,%s, %s, %s, %s, %s, %s, %s, %s, %s) """   
+        cursor.execute(sql,(account_id,date,name,students_id,room,type_leave,subject,teacher,cause,pdf))
         conn.commit()
 
         # data_sql = cursor.fetchall()
