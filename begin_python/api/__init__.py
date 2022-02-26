@@ -5,3 +5,5 @@ from api import homework
 from api import calendar
 from api import submitleave
 from api import schedule_student
+from api import score
+from api import grade

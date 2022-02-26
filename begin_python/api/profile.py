@@ -18,6 +18,7 @@ def profile():
         data_sql = cursor.fetchall()
         columns = [column[0] for column in cursor.description]
         result = toJson(data_sql,columns)
+        print(data_sql)
         if len(result) > 0:
             result = {"status":"OK","result":result}
         else:

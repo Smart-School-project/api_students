@@ -3,7 +3,7 @@
 from dbConfig import *
 
 #ไว้ confiq
-@app.route('/login', methods=['POST']) #
+@app.route('/login', methods=['POST']) 
 def login():
     try:
         data = request.json
@@ -14,7 +14,8 @@ def login():
         conn = connectToDB() #ไว้เชื่อมดาต้าเบส #เอาไว้เปิด
         cursor = conn.cursor() #ทำงานอยู่ที่ไหน
 
-        sql = """ SELECT id,role_id FROM account WHERE username = %s AND password = %s"""
+        # sql = """ SELECT id,role_id FROM account WHERE username = %s AND password = %s"""
+        sql = """ SELECT account.id,account.role_id,profile.id AS std_id FROM account INNER JOIN profile ON account.id = profile.account_id WHERE username = %s AND password = %s """
         print(sql)
         cursor.execute(sql,(username,password))
         data_sql = cursor.fetchall()

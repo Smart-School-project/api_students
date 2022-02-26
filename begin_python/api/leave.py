@@ -15,7 +15,6 @@ def leave():
         teacher = data["teacher"]
         cause = data["cause"]
         pdf = data["pdf"]
-
         # connect db
         conn = connectToDB()
         cursor = conn.cursor()
