@@ -12,7 +12,8 @@ CORS(app)
 
 def connectToDB():
     try:
-        connectionString = mysql.connector.connect(host='localhost',database='project',user='root',password='',port=3306)
+        #connectionString = mysql.connector.connect(host='localhost',database='project',user='root',password='',port=3306)
+        connectionString = mysql.connector.connect(host='sql6.freesqldatabase.com',database='sql6475527',user='sql6475527',password='BrdmWhME71',port=3306)
         print(connectionString)
     except Exception as e:
         print(e)

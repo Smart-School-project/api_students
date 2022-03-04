@@ -13,7 +13,7 @@ def homework():
         conn = connectToDB()
         cursor = conn.cursor()
 
-        sql = """ SELECT cause_name, room,detail, date, file FROM `homework` WHERE room = '""" + str(room) + """'"""
+        sql = """ SELECT course_name, room,detail, date, file FROM `homework` WHERE room = '""" + str(room) + """'"""
         # ด้านหลังเช็คเป็น string เราสามารถใส่ """''""" เเบบนี้มันจะบอกเป็น string
         print(sql)
         cursor.execute(sql)

@@ -21,6 +21,7 @@ def score():
         print(data_sql)
         columns = [column[0] for column in cursor.description]
         result = toJson(data_sql,columns)
+        print(result)
         if len(result) >= 0:
             item_score = []
             for i in result:
